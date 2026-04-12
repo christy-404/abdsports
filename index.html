@@ -70,88 +70,94 @@
       </div>
     </section>
 
-    <section class="section reveal" id="featured">
+    <section class="section section--surface reveal" id="featured">
       <div class="container">
-        <div class="section-heading">
-          <span class="section-heading-bar" aria-hidden="true"></span>
+        <div class="section-heading section-heading--major">
           <div class="section-heading-text">
             <p class="section-label">Featured Products</p>
             <h2>Trending Sports Gear</h2>
+            <span class="section-title-divider" aria-hidden="true"></span>
           </div>
         </div>
-        <div class="slider-container">
-          <div class="slider">
-            <div class="slide">
-              <article class="product-card">
-                <div class="card-image card-image--product">
-                  <img src="images/gallery-4.svg" alt="Football jersey product" width="400" height="300" loading="lazy" decoding="async">
-                </div>
-                <h3>Football Jersey</h3>
-                <p>Official team jersey with premium materials and breathable fabric.</p>
-                <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
-              </article>
-              <article class="product-card">
-                <div class="card-image card-image--product">
-                  <img src="images/gallery-1.svg" alt="Cricket bat product" width="400" height="300" loading="lazy" decoding="async">
-                </div>
-                <h3>Cricket Bat</h3>
-                <p>Professional-grade cricket bat crafted for power and precision.</p>
-                <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
-              </article>
-              <article class="product-card">
-                <div class="card-image card-image--product">
-                  <img src="images/gallery-3.svg" alt="Basketball product" width="400" height="300" loading="lazy" decoding="async">
-                </div>
-                <h3>Basketball</h3>
-                <p>High-quality basketball with superior grip and bounce.</p>
-                <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
-              </article>
-              <article class="product-card">
-                <div class="card-image card-image--product">
-                  <img src="images/gallery-2.svg" alt="Sports gloves product" width="400" height="300" loading="lazy" decoding="async">
-                </div>
-                <h3>Sports Gloves</h3>
-                <p>Protective gloves for cricket, football, and other sports.</p>
-                <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
-              </article>
-            </div>
-            <div class="slide">
-              <article class="product-card">
-                <div class="card-image card-image--product">
-                  <img src="images/gallery-1.svg" alt="Training cones product" width="400" height="300" loading="lazy" decoding="async">
-                </div>
-                <h3>Training Cones</h3>
-                <p>Essential training equipment for agility and skill development.</p>
-                <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
-              </article>
-              <article class="product-card">
-                <div class="card-image card-image--product">
-                  <img src="images/gallery-2.svg" alt="Football product" width="400" height="300" loading="lazy" decoding="async">
-                </div>
-                <h3>Football</h3>
-                <p>Durable football designed for training and competitive play.</p>
-                <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
-              </article>
-              <article class="product-card">
-                <div class="card-image card-image--product">
-                  <img src="images/gallery-3.svg" alt="Fitness accessories product" width="400" height="300" loading="lazy" decoding="async">
-                </div>
-                <h3>Fitness Accessories</h3>
-                <p>Weights, resistance bands, and other fitness essentials.</p>
-                <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
-              </article>
-              <article class="product-card">
-                <div class="card-image card-image--product">
-                  <img src="images/gallery-4.svg" alt="Cricket jersey product" width="400" height="300" loading="lazy" decoding="async">
-                </div>
-                <h3>Cricket Jersey</h3>
-                <p>High-performance cricket jersey for players and fans.</p>
-                <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
-              </article>
+        <div class="product-carousel" data-carousel>
+          <button class="carousel-nav carousel-nav--prev" type="button" aria-label="Scroll products left" data-carousel-prev>
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <div class="carousel-shell">
+            <div class="carousel-fade carousel-fade--left" aria-hidden="true" data-fade-left></div>
+            <div class="carousel-fade carousel-fade--right" aria-hidden="true" data-fade-right></div>
+            <div class="carousel-viewport" id="productCarouselViewport" tabindex="0">
+              <div class="carousel-track" id="productCarouselTrack">
+                <article class="product-card">
+                  <div class="card-image card-image--product">
+                    <img src="images/gallery-4.svg" alt="Football jersey product" width="800" height="600" loading="lazy" decoding="async">
+                  </div>
+                  <h3>Football Jersey</h3>
+                  <p>Official team jersey with premium materials and breathable fabric.</p>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                </article>
+                <article class="product-card">
+                  <div class="card-image card-image--product">
+                    <img src="images/gallery-1.svg" alt="Cricket bat product" width="800" height="600" loading="lazy" decoding="async">
+                  </div>
+                  <h3>Cricket Bat</h3>
+                  <p>Professional-grade cricket bat crafted for power and precision.</p>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                </article>
+                <article class="product-card">
+                  <div class="card-image card-image--product">
+                    <img src="images/gallery-3.svg" alt="Basketball product" width="800" height="600" loading="lazy" decoding="async">
+                  </div>
+                  <h3>Basketball</h3>
+                  <p>High-quality basketball with superior grip and bounce.</p>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                </article>
+                <article class="product-card">
+                  <div class="card-image card-image--product">
+                    <img src="images/gallery-2.svg" alt="Sports gloves product" width="800" height="600" loading="lazy" decoding="async">
+                  </div>
+                  <h3>Sports Gloves</h3>
+                  <p>Protective gloves for cricket, football, and other sports.</p>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                </article>
+                <article class="product-card">
+                  <div class="card-image card-image--product">
+                    <img src="https://images.unsplash.com/photo-1517649763962-0c62306601b7?auto=format&fit=crop&w=800&q=75" alt="Training cones on a sports field" width="800" height="600" loading="lazy" decoding="async">
+                  </div>
+                  <h3>Training Cones</h3>
+                  <p>Essential training equipment for agility and skill development.</p>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                </article>
+                <article class="product-card">
+                  <div class="card-image card-image--product">
+                    <img src="https://images.unsplash.com/photo-1614632537423-1e939e74a26d?auto=format&fit=crop&w=800&q=75" alt="Soccer ball on grass" width="800" height="600" loading="lazy" decoding="async">
+                  </div>
+                  <h3>Football</h3>
+                  <p>Durable football designed for training and competitive play.</p>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                </article>
+                <article class="product-card">
+                  <div class="card-image card-image--product">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=75" alt="Dumbbells and fitness training gear" width="800" height="600" loading="lazy" decoding="async">
+                  </div>
+                  <h3>Fitness Accessories</h3>
+                  <p>Weights, resistance bands, and other fitness essentials.</p>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                </article>
+                <article class="product-card">
+                  <div class="card-image card-image--product">
+                    <img src="https://images.unsplash.com/photo-1531415074968-036ba1d42f7d?auto=format&fit=crop&w=800&q=75" alt="Cricket player in team jersey" width="800" height="600" loading="lazy" decoding="async">
+                  </div>
+                  <h3>Cricket Jersey</h3>
+                  <p>High-performance cricket jersey for players and fans.</p>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                </article>
+              </div>
             </div>
           </div>
-          <button class="slider-prev" type="button" aria-label="Previous slide"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
-          <button class="slider-next" type="button" aria-label="Next slide"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+          <button class="carousel-nav carousel-nav--next" type="button" aria-label="Scroll products right" data-carousel-next>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </section>
@@ -204,7 +210,7 @@
       </div>
     </section>
 
-    <section class="section reveal" id="equipment">
+    <section class="section section--surface reveal" id="equipment">
       <div class="container">
         <div class="section-heading">
           <span class="section-heading-bar" aria-hidden="true"></span>
@@ -268,11 +274,11 @@
 
     <section class="section reveal" id="gallery">
       <div class="container">
-        <div class="section-heading">
-          <span class="section-heading-bar" aria-hidden="true"></span>
+        <div class="section-heading section-heading--major">
           <div class="section-heading-text">
             <p class="section-label">Gallery</p>
             <h2>Showcase of Our Premium Sports Gear</h2>
+            <span class="section-title-divider" aria-hidden="true"></span>
           </div>
         </div>
         <div class="gallery-grid">
@@ -296,18 +302,19 @@
       </div>
     </section>
 
-    <section class="section reveal" id="about">
+    <section class="section section--surface reveal" id="about">
       <div class="container">
         <div class="section-grid">
           <div class="about-image">
             <img src="images/gallery-1.svg" alt="ABD SPORTS Store Interior" loading="lazy">
           </div>
           <div class="about-content">
-            <div class="section-heading section-heading--compact">
+            <div class="section-heading section-heading--compact section-heading--title-block">
               <span class="section-heading-bar" aria-hidden="true"></span>
               <div class="section-heading-text">
                 <p class="section-label">About ABD SPORTS</p>
                 <h2>Your Trusted Sports Destination</h2>
+                <span class="section-title-divider" aria-hidden="true"></span>
               </div>
             </div>
             <p>ABD SPORTS is your trusted destination for premium sports gear, jerseys, and athletic equipment. We offer a wide range of high-quality products for football, cricket, basketball, and more. Our expert staff is here to help you find the perfect gear for your athletic needs.</p>
@@ -342,11 +349,12 @@
     <section class="section contact-section reveal" id="contact">
       <div class="container contact-grid">
         <div class="contact-copy">
-          <div class="section-heading section-heading--compact">
+          <div class="section-heading section-heading--compact section-heading--title-block">
             <span class="section-heading-bar" aria-hidden="true"></span>
             <div class="section-heading-text">
               <p class="section-label">Contact</p>
               <h2>Ready to gear up your game?</h2>
+              <span class="section-title-divider" aria-hidden="true"></span>
             </div>
           </div>
           <p class="contact-lead">Contact ABD SPORTS and we'll help you find the perfect equipment for your athletic needs.</p>

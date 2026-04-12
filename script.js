@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   const backToTop = createBackToTop();
   const whatsappButton = document.getElementById('whatsappButton');
-  const scrollOffset = 88;
+  const scrollOffset = 100;
 
   if (whatsappButton) {
     whatsappButton.addEventListener('click', () => {
@@ -42,12 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.add('visible');
-          }, index * 80);
+          }, index * 70);
           observers.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.14, rootMargin: '0px 0px -8% 0px' }
+    { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
   );
 
   revealTargets.forEach((element) => observers.observe(element));
@@ -77,49 +77,50 @@ document.addEventListener('DOMContentLoaded', () => {
     navToggle.addEventListener('click', () => toggleMobileNav());
   }
 
-  const slider = document.querySelector('.slider');
-  const slides = document.querySelectorAll('.slide');
-  const prevBtn = document.querySelector('.slider-prev');
-  const nextBtn = document.querySelector('.slider-next');
-  let currentSlide = 0;
-  let autoSlideInterval;
+  const carouselViewport = document.getElementById('productCarouselViewport');
+  const carouselPrev = document.querySelector('[data-carousel-prev]');
+  const carouselNext = document.querySelector('[data-carousel-next]');
+  const fadeLeft = document.querySelector('[data-fade-left]');
+  const fadeRight = document.querySelector('[data-fade-right]');
 
-  if (slider && slides.length > 0) {
-    const updateSlider = () => {
-      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const updateCarouselFades = () => {
+    if (!carouselViewport) return;
+    const { scrollLeft, scrollWidth, clientWidth } = carouselViewport;
+    const maxScroll = Math.max(0, scrollWidth - clientWidth);
+    const atStart = scrollLeft <= 8;
+    const atEnd = scrollLeft >= maxScroll - 8;
+
+    fadeLeft?.classList.toggle('is-visible', !atStart && maxScroll > 0);
+    fadeRight?.classList.toggle('is-visible', !atEnd && maxScroll > 0);
+  };
+
+  if (carouselViewport) {
+    const scrollCarousel = (direction) => {
+      const step = Math.max(240, Math.round(carouselViewport.clientWidth * 0.72));
+      carouselViewport.scrollBy({
+        left: direction * step,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      });
     };
 
-    const nextSlide = () => {
-      currentSlide = (currentSlide + 1) % slides.length;
-      updateSlider();
-    };
+    carouselPrev?.addEventListener('click', () => scrollCarousel(-1));
+    carouselNext?.addEventListener('click', () => scrollCarousel(1));
 
-    const prevSlide = () => {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      updateSlider();
-    };
-
-    const startAutoSlide = () => {
-      autoSlideInterval = setInterval(nextSlide, 5000);
-    };
-
-    const stopAutoSlide = () => {
-      clearInterval(autoSlideInterval);
-    };
-
-    nextBtn?.addEventListener('click', () => {
-      nextSlide();
-      stopAutoSlide();
-      startAutoSlide();
+    carouselViewport.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        scrollCarousel(-1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        scrollCarousel(1);
+      }
     });
 
-    prevBtn?.addEventListener('click', () => {
-      prevSlide();
-      stopAutoSlide();
-      startAutoSlide();
-    });
-
-    startAutoSlide();
+    carouselViewport.addEventListener('scroll', updateCarouselFades, { passive: true });
+    window.addEventListener('resize', updateCarouselFades, { passive: true });
+    updateCarouselFades();
   }
 
   window.addEventListener('resize', () => {
@@ -136,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
           setTimeout(() => {
             entry.target.classList.remove('card-reveal-pending');
             entry.target.classList.add('card-reveal-visible');
-          }, index * 55);
+          }, index * 50);
           cardObserver.unobserve(entry.target);
         }
       });
@@ -156,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
           setTimeout(() => {
             entry.target.classList.remove('gallery-reveal-pending');
             entry.target.classList.add('gallery-reveal-visible');
-          }, index * 100);
+          }, index * 90);
           galleryObserver.unobserve(entry.target);
         }
       });
