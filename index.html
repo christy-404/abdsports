@@ -6,6 +6,7 @@
   <title>ABD SPORTS - Premium Sports Jerseys & Equipment</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6usznumpJZrMSdxQv7ywVfM20U2b50dJt1SXQvNiadea7OUa2ggfISbzlKvg7vQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
@@ -34,6 +35,7 @@
   </header>
 
   <main>
+    <!-- Hero photo: edit --hero-bg-image in style.css :root (or use a file under assets/) -->
     <section class="hero reveal" id="hero">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-grid">
@@ -71,32 +73,43 @@
     <section class="section reveal" id="featured">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Featured Products</p>
-          <h2>Trending Sports Gear</h2>
+          <span class="section-heading-bar" aria-hidden="true"></span>
+          <div class="section-heading-text">
+            <p class="section-label">Featured Products</p>
+            <h2>Trending Sports Gear</h2>
+          </div>
         </div>
         <div class="slider-container">
           <div class="slider">
             <div class="slide">
               <article class="product-card">
-                <div class="card-image" style="background: linear-gradient(135deg, #ff6b35, #f7931e);"></div>
+                <div class="card-image card-image--product">
+                  <img src="images/gallery-4.svg" alt="Football jersey product" width="400" height="300" loading="lazy" decoding="async">
+                </div>
                 <h3>Football Jersey</h3>
                 <p>Official team jersey with premium materials and breathable fabric.</p>
                 <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
               </article>
               <article class="product-card">
-                <div class="card-image" style="background: linear-gradient(135deg, #1e3a8a, #2563eb);"></div>
+                <div class="card-image card-image--product">
+                  <img src="images/gallery-1.svg" alt="Cricket bat product" width="400" height="300" loading="lazy" decoding="async">
+                </div>
                 <h3>Cricket Bat</h3>
                 <p>Professional-grade cricket bat crafted for power and precision.</p>
                 <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
               </article>
               <article class="product-card">
-                <div class="card-image" style="background: linear-gradient(135deg, #dc2626, #ef4444);"></div>
+                <div class="card-image card-image--product">
+                  <img src="images/gallery-3.svg" alt="Basketball product" width="400" height="300" loading="lazy" decoding="async">
+                </div>
                 <h3>Basketball</h3>
                 <p>High-quality basketball with superior grip and bounce.</p>
                 <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
               </article>
               <article class="product-card">
-                <div class="card-image" style="background: linear-gradient(135deg, #059669, #10b981);"></div>
+                <div class="card-image card-image--product">
+                  <img src="images/gallery-2.svg" alt="Sports gloves product" width="400" height="300" loading="lazy" decoding="async">
+                </div>
                 <h3>Sports Gloves</h3>
                 <p>Protective gloves for cricket, football, and other sports.</p>
                 <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
@@ -104,25 +117,33 @@
             </div>
             <div class="slide">
               <article class="product-card">
-                <div class="card-image" style="background: linear-gradient(135deg, #7c3aed, #a855f7);"></div>
+                <div class="card-image card-image--product">
+                  <img src="images/gallery-1.svg" alt="Training cones product" width="400" height="300" loading="lazy" decoding="async">
+                </div>
                 <h3>Training Cones</h3>
                 <p>Essential training equipment for agility and skill development.</p>
                 <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
               </article>
               <article class="product-card">
-                <div class="card-image" style="background: linear-gradient(135deg, #ea580c, #f97316);"></div>
+                <div class="card-image card-image--product">
+                  <img src="images/gallery-2.svg" alt="Football product" width="400" height="300" loading="lazy" decoding="async">
+                </div>
                 <h3>Football</h3>
                 <p>Durable football designed for training and competitive play.</p>
                 <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
               </article>
               <article class="product-card">
-                <div class="card-image" style="background: linear-gradient(135deg, #16a34a, #22c55e);"></div>
+                <div class="card-image card-image--product">
+                  <img src="images/gallery-3.svg" alt="Fitness accessories product" width="400" height="300" loading="lazy" decoding="async">
+                </div>
                 <h3>Fitness Accessories</h3>
                 <p>Weights, resistance bands, and other fitness essentials.</p>
                 <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
               </article>
               <article class="product-card">
-                <div class="card-image" style="background: linear-gradient(135deg, #1e40af, #3b82f6);"></div>
+                <div class="card-image card-image--product">
+                  <img src="images/gallery-4.svg" alt="Cricket jersey product" width="400" height="300" loading="lazy" decoding="async">
+                </div>
                 <h3>Cricket Jersey</h3>
                 <p>High-performance cricket jersey for players and fans.</p>
                 <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
@@ -138,27 +159,38 @@
     <section class="section reveal" id="jerseys">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Team Jerseys</p>
-          <h2>Premium Jerseys for Every Sport</h2>
+          <span class="section-heading-bar" aria-hidden="true"></span>
+          <div class="section-heading-text">
+            <p class="section-label">Team Jerseys</p>
+            <h2>Premium Jerseys for Every Sport</h2>
+          </div>
         </div>
         <div class="cards-grid">
           <article class="service-card">
-            <div class="card-image" style="background: linear-gradient(135deg, #ff6b35, #f7931e);"></div>
+            <div class="card-image card-image--product">
+              <img src="images/gallery-4.svg" alt="Football jerseys" width="400" height="300" loading="lazy" decoding="async">
+            </div>
             <h3>Football Jerseys</h3>
             <p>Official team jerseys with authentic designs and premium materials.</p>
           </article>
           <article class="service-card">
-            <div class="card-image" style="background: linear-gradient(135deg, #1e3a8a, #2563eb);"></div>
+            <div class="card-image card-image--product">
+              <img src="images/gallery-1.svg" alt="Cricket jerseys" width="400" height="300" loading="lazy" decoding="async">
+            </div>
             <h3>Cricket Jerseys</h3>
             <p>High-performance cricket jerseys for players and fans alike.</p>
           </article>
           <article class="service-card">
-            <div class="card-image" style="background: linear-gradient(135deg, #dc2626, #ef4444);"></div>
+            <div class="card-image card-image--product">
+              <img src="images/gallery-3.svg" alt="Basketball jerseys" width="400" height="300" loading="lazy" decoding="async">
+            </div>
             <h3>Basketball Jerseys</h3>
             <p>Dynamic basketball jerseys with breathable fabrics and bold designs.</p>
           </article>
           <article class="service-card">
-            <div class="card-image" style="background: linear-gradient(135deg, #059669, #10b981);"></div>
+            <div class="card-image card-image--product">
+              <img src="images/gallery-4.svg" alt="Club jerseys" width="400" height="300" loading="lazy" decoding="async">
+            </div>
             <h3>Club Jerseys</h3>
             <p>Custom club jerseys for teams and local sports organizations.</p>
           </article>
@@ -175,37 +207,52 @@
     <section class="section reveal" id="equipment">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Sports Equipment</p>
-          <h2>Top-Quality Gear for Every Athlete</h2>
+          <span class="section-heading-bar" aria-hidden="true"></span>
+          <div class="section-heading-text">
+            <p class="section-label">Sports Equipment</p>
+            <h2>Top-Quality Gear for Every Athlete</h2>
+          </div>
         </div>
         <div class="cards-grid">
           <article class="service-card">
-            <div class="card-image" style="background: linear-gradient(135deg, #7c3aed, #a855f7);"></div>
+            <div class="card-image card-image--product">
+              <img src="images/gallery-1.svg" alt="Cricket bats" width="400" height="300" loading="lazy" decoding="async">
+            </div>
             <h3>Cricket Bats</h3>
             <p>Professional-grade cricket bats crafted for power and precision.</p>
           </article>
           <article class="service-card">
-            <div class="card-image" style="background: linear-gradient(135deg, #ea580c, #f97316);"></div>
+            <div class="card-image card-image--product">
+              <img src="images/gallery-2.svg" alt="Footballs" width="400" height="300" loading="lazy" decoding="async">
+            </div>
             <h3>Footballs</h3>
             <p>Durable footballs designed for training and competitive play.</p>
           </article>
           <article class="service-card">
-            <div class="card-image" style="background: linear-gradient(135deg, #dc2626, #ef4444);"></div>
+            <div class="card-image card-image--product">
+              <img src="images/gallery-3.svg" alt="Basketballs" width="400" height="300" loading="lazy" decoding="async">
+            </div>
             <h3>Basketballs</h3>
             <p>High-quality basketballs with superior grip and bounce.</p>
           </article>
           <article class="service-card">
-            <div class="card-image" style="background: linear-gradient(135deg, #16a34a, #22c55e);"></div>
+            <div class="card-image card-image--product">
+              <img src="images/gallery-2.svg" alt="Training cones" width="400" height="300" loading="lazy" decoding="async">
+            </div>
             <h3>Training Cones</h3>
             <p>Essential training equipment for agility and skill development.</p>
           </article>
           <article class="service-card">
-            <div class="card-image" style="background: linear-gradient(135deg, #7c2d12, #ea580c);"></div>
+            <div class="card-image card-image--product">
+              <img src="images/gallery-1.svg" alt="Sports gloves" width="400" height="300" loading="lazy" decoding="async">
+            </div>
             <h3>Sports Gloves</h3>
             <p>Protective gloves for cricket, football, and other sports.</p>
           </article>
           <article class="service-card">
-            <div class="card-image" style="background: linear-gradient(135deg, #1e40af, #3b82f6);"></div>
+            <div class="card-image card-image--product">
+              <img src="images/gallery-3.svg" alt="Fitness accessories" width="400" height="300" loading="lazy" decoding="async">
+            </div>
             <h3>Fitness Accessories</h3>
             <p>Weights, resistance bands, and other fitness essentials.</p>
           </article>
@@ -222,8 +269,11 @@
     <section class="section reveal" id="gallery">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Gallery</p>
-          <h2>Showcase of Our Premium Sports Gear</h2>
+          <span class="section-heading-bar" aria-hidden="true"></span>
+          <div class="section-heading-text">
+            <p class="section-label">Gallery</p>
+            <h2>Showcase of Our Premium Sports Gear</h2>
+          </div>
         </div>
         <div class="gallery-grid">
           <div class="gallery-item">
@@ -253,8 +303,13 @@
             <img src="images/gallery-1.svg" alt="ABD SPORTS Store Interior" loading="lazy">
           </div>
           <div class="about-content">
-            <p class="section-label">About ABD SPORTS</p>
-            <h2>Your Trusted Sports Destination</h2>
+            <div class="section-heading section-heading--compact">
+              <span class="section-heading-bar" aria-hidden="true"></span>
+              <div class="section-heading-text">
+                <p class="section-label">About ABD SPORTS</p>
+                <h2>Your Trusted Sports Destination</h2>
+              </div>
+            </div>
             <p>ABD SPORTS is your trusted destination for premium sports gear, jerseys, and athletic equipment. We offer a wide range of high-quality products for football, cricket, basketball, and more. Our expert staff is here to help you find the perfect gear for your athletic needs.</p>
             <p>With years of experience in the sports industry, we pride ourselves on providing top-quality products from leading brands, competitive pricing, and exceptional customer service. Whether you're a professional athlete, weekend warrior, or team coach, we have everything you need to perform at your best.</p>
             <div class="about-stats">
@@ -287,8 +342,13 @@
     <section class="section contact-section reveal" id="contact">
       <div class="container contact-grid">
         <div class="contact-copy">
-          <p class="section-label">Contact</p>
-          <h2>Ready to gear up your game?</h2>
+          <div class="section-heading section-heading--compact">
+            <span class="section-heading-bar" aria-hidden="true"></span>
+            <div class="section-heading-text">
+              <p class="section-label">Contact</p>
+              <h2>Ready to gear up your game?</h2>
+            </div>
+          </div>
           <p class="contact-lead">Contact ABD SPORTS and we'll help you find the perfect equipment for your athletic needs.</p>
           <ul class="contact-details" role="list">
             <li class="contact-detail">
