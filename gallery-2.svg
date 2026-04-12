@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Product showcase">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0f9ff" />
+      <stop offset="100%" stop-color="#dbeafe" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g2)" />
+  <circle cx="210" cy="220" r="120" fill="#2563eb" opacity="0.2" />
+  <circle cx="560" cy="240" r="150" fill="#1d4ed8" opacity="0.16" />
+  <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" font-family="Inter, sans-serif" font-size="42" fill="#1e3a8a">Product showcase</text>
+  <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#475569">Clear, elegant presentation</text>
+</svg>

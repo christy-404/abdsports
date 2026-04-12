@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Service booking flow">
+  <defs>
+    <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eff6ff" />
+      <stop offset="100%" stop-color="#dbeafe" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g4)" />
+  <path d="M160 400 C220 320 320 310 420 340 S620 430 680 340" fill="none" stroke="#2563eb" stroke-width="20" stroke-linecap="round" />
+  <circle cx="190" cy="410" r="24" fill="#2563eb" />
+  <circle cx="420" cy="350" r="24" fill="#2563eb" />
+  <circle cx="650" cy="340" r="24" fill="#2563eb" />
+  <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" font-family="Inter, sans-serif" font-size="42" fill="#1e3a8a">Service booking flow</text>
+</svg>
