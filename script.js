@@ -7,12 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   const backToTop = createBackToTop();
   const whatsappButton = document.getElementById('whatsappButton');
-  const scrollOffset = 70;
+  const scrollOffset = 88;
 
-  // WhatsApp button functionality
   if (whatsappButton) {
     whatsappButton.addEventListener('click', () => {
-      window.open('https://wa.me/15551234567', '_blank');
+      window.open('https://wa.me/15551234567', '_blank', 'noopener,noreferrer');
     });
   }
 
@@ -43,20 +42,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.add('visible');
-          }, index * 100); // Stagger animation
+          }, index * 80);
           observers.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.18 }
+    { threshold: 0.14, rootMargin: '0px 0px -8% 0px' }
   );
 
   revealTargets.forEach((element) => observers.observe(element));
 
   const updateScrollState = () => {
     const scrollTop = window.scrollY;
-    siteHeader.classList.toggle('scrolled', scrollTop > 30);
-    backToTop.classList.toggle('visible', scrollTop > 500);
+    siteHeader.classList.toggle('scrolled', scrollTop > 24);
+    backToTop.classList.toggle('visible', scrollTop > 480);
   };
 
   window.addEventListener('scroll', updateScrollState, { passive: true });
@@ -74,7 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
     navToggle.setAttribute('aria-expanded', 'false');
   };
 
-  // Slider functionality
+  if (navToggle) {
+    navToggle.addEventListener('click', () => toggleMobileNav());
+  }
+
   const slider = document.querySelector('.slider');
   const slides = document.querySelectorAll('.slide');
   const prevBtn = document.querySelector('.slider-prev');
@@ -126,48 +128,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Enhanced card animations
   const productCards = document.querySelectorAll('.product-card, .service-card');
   const cardObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
-            entry.target.style.transform = 'translateY(0)';
-            entry.target.style.opacity = '1';
-          }, index * 50);
+            entry.target.classList.remove('card-reveal-pending');
+            entry.target.classList.add('card-reveal-visible');
+          }, index * 55);
+          cardObserver.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.08, rootMargin: '0px 0px -5% 0px' }
   );
 
   productCards.forEach((card) => {
-    card.style.transform = 'translateY(30px)';
-    card.style.opacity = '0';
-    card.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
+    card.classList.add('card-reveal-pending');
     cardObserver.observe(card);
   });
 
-  // Gallery animations with delay
   const galleryObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'scale(1)';
-          }, index * 150);
+            entry.target.classList.remove('gallery-reveal-pending');
+            entry.target.classList.add('gallery-reveal-visible');
+          }, index * 100);
+          galleryObserver.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
   );
 
   galleryItems.forEach((item) => {
-    item.style.opacity = '0';
-    item.style.transform = 'scale(0.9)';
-    item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    item.classList.add('gallery-reveal-pending');
     galleryObserver.observe(item);
   });
 
@@ -219,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     button.type = 'button';
     button.className = 'back-to-top';
     button.setAttribute('aria-label', 'Back to top');
-    button.textContent = '↑';
+    button.innerHTML = '<i class="fa-solid fa-arrow-up" aria-hidden="true"></i>';
     document.body.appendChild(button);
     button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     return button;
