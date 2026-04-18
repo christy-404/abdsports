@@ -1,70 +1,82 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const siteHeader = document.querySelector('.site-header');
-  const nav = document.getElementById('mainNav');
-  const navToggle = document.getElementById('navToggle');
-  const revealTargets = document.querySelectorAll('.reveal');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  const contactForm = document.getElementById('contactForm');
-  const backToTop = createBackToTop();
-  const whatsappButton = document.getElementById('whatsappButton');
-  const scrollOffset = 100;
+  /** Update this number when the client's WhatsApp changes */
+  const WHATSAPP_NUMBER = '15551234567';
+  const DEFAULT_WA_MESSAGE = 'Hello, I want to place an order with ABD SPORTS.';
 
+  /* ─── WhatsApp helpers ─── */
+  const waUrl = (text) => {
+    const q = encodeURIComponent((text || '').trim());
+    return `https://wa.me/${WHATSAPP_NUMBER}${q ? `?text=${q}` : ''}`;
+  };
+
+  const applyWhatsAppLinks = () => {
+    document.querySelectorAll('[data-wa-product]').forEach((el) => {
+      const name = el.getAttribute('data-wa-product');
+      if (!name) return;
+      el.setAttribute('href', waUrl(`Hello, I want to order the ${name} from ABD SPORTS.`));
+    });
+    document.querySelectorAll('[data-wa-message]').forEach((el) => {
+      const msg = el.getAttribute('data-wa-message');
+      if (msg) el.setAttribute('href', waUrl(msg));
+    });
+  };
+
+  applyWhatsAppLinks();
+
+  /* ─── Element references ─── */
+  const siteHeader         = document.querySelector('.site-header');
+  const nav                = document.getElementById('mainNav');
+  const navToggle          = document.getElementById('navToggle');
+  const revealTargets      = document.querySelectorAll('.reveal');
+  const galleryItems       = document.querySelectorAll('.gallery-item');
+  const contactForm        = document.getElementById('contactForm');
+  const whatsappButton     = document.getElementById('whatsappButton');
+  const carouselViewport   = document.getElementById('productCarouselViewport');
+  const carouselPrev       = document.querySelector('[data-carousel-prev]');
+  const carouselNext       = document.querySelector('[data-carousel-next]');
+  const fadeLeft           = document.querySelector('[data-fade-left]');
+  const fadeRight          = document.querySelector('[data-fade-right]');
+  const indicatorThumb     = document.getElementById('carouselIndicatorThumb');
+  const backToTop          = createBackToTop();
+  const scrollOffset       = 100;
+  const prefersReduced     = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ─── Floating WhatsApp button ─── */
   if (whatsappButton) {
     whatsappButton.addEventListener('click', () => {
-      window.open('https://wa.me/15551234567', '_blank', 'noopener,noreferrer');
+      window.open(waUrl(DEFAULT_WA_MESSAGE), '_blank', 'noopener,noreferrer');
     });
   }
 
-  const scrollToId = (id) => {
-    const target = document.getElementById(id);
-    if (!target) return;
-    const top = target.getBoundingClientRect().top + window.pageYOffset - scrollOffset;
-    window.scrollTo({ top, behavior: 'smooth' });
-  };
-
+  /* ─── Smooth scroll for anchor links ─── */
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', (event) => {
+    link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
       if (!href || href === '#') return;
-      const targetId = href.slice(1);
-      const targetElement = document.getElementById(targetId);
-      if (!targetElement) return;
-
-      event.preventDefault();
-      scrollToId(targetId);
+      const target = document.getElementById(href.slice(1));
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.pageYOffset - scrollOffset;
+      window.scrollTo({ top, behavior: prefersReduced ? 'auto' : 'smooth' });
       closeMobileNav();
     });
   });
 
-  const observers = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, index * 70);
-          observers.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
-  );
-
-  revealTargets.forEach((element) => observers.observe(element));
-
+  /* ─── Scroll-driven state (header + back-to-top) ─── */
   const updateScrollState = () => {
-    const scrollTop = window.scrollY;
-    siteHeader.classList.toggle('scrolled', scrollTop > 24);
-    backToTop.classList.toggle('visible', scrollTop > 480);
+    const y = window.scrollY;
+    siteHeader.classList.toggle('scrolled', y > 24);
+    backToTop.classList.toggle('visible', y > 480);
   };
 
   window.addEventListener('scroll', updateScrollState, { passive: true });
   updateScrollState();
 
+  /* ─── Mobile nav ─── */
   const toggleMobileNav = () => {
     if (!nav || !navToggle) return;
-    const isOpen = nav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
+    const open = nav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
   };
 
   const closeMobileNav = () => {
@@ -73,71 +85,36 @@ document.addEventListener('DOMContentLoaded', () => {
     navToggle.setAttribute('aria-expanded', 'false');
   };
 
-  if (navToggle) {
-    navToggle.addEventListener('click', () => toggleMobileNav());
-  }
-
-  const carouselViewport = document.getElementById('productCarouselViewport');
-  const carouselPrev = document.querySelector('[data-carousel-prev]');
-  const carouselNext = document.querySelector('[data-carousel-next]');
-  const fadeLeft = document.querySelector('[data-fade-left]');
-  const fadeRight = document.querySelector('[data-fade-right]');
-
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const updateCarouselFades = () => {
-    if (!carouselViewport) return;
-    const { scrollLeft, scrollWidth, clientWidth } = carouselViewport;
-    const maxScroll = Math.max(0, scrollWidth - clientWidth);
-    const atStart = scrollLeft <= 8;
-    const atEnd = scrollLeft >= maxScroll - 8;
-
-    fadeLeft?.classList.toggle('is-visible', !atStart && maxScroll > 0);
-    fadeRight?.classList.toggle('is-visible', !atEnd && maxScroll > 0);
-  };
-
-  if (carouselViewport) {
-    const scrollCarousel = (direction) => {
-      const step = Math.max(240, Math.round(carouselViewport.clientWidth * 0.72));
-      carouselViewport.scrollBy({
-        left: direction * step,
-        behavior: prefersReducedMotion ? 'auto' : 'smooth',
-      });
-    };
-
-    carouselPrev?.addEventListener('click', () => scrollCarousel(-1));
-    carouselNext?.addEventListener('click', () => scrollCarousel(1));
-
-    carouselViewport.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        scrollCarousel(-1);
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        scrollCarousel(1);
-      }
-    });
-
-    carouselViewport.addEventListener('scroll', updateCarouselFades, { passive: true });
-    window.addEventListener('resize', updateCarouselFades, { passive: true });
-    updateCarouselFades();
-  }
+  if (navToggle) navToggle.addEventListener('click', toggleMobileNav);
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-      closeMobileNav();
-    }
+    if (window.innerWidth > 768) closeMobileNav();
   });
 
-  const productCards = document.querySelectorAll('.product-card, .service-card');
+  /* ─── Section reveal on scroll ─── */
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 70);
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
+  );
+
+  revealTargets.forEach((el) => sectionObserver.observe(el));
+
+  /* ─── Card reveal on scroll ─── */
   const cardObserver = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry, index) => {
+      entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.remove('card-reveal-pending');
             entry.target.classList.add('card-reveal-visible');
-          }, index * 50);
+          }, i * 55);
           cardObserver.unobserve(entry.target);
         }
       });
@@ -145,19 +122,20 @@ document.addEventListener('DOMContentLoaded', () => {
     { threshold: 0.08, rootMargin: '0px 0px -5% 0px' }
   );
 
-  productCards.forEach((card) => {
+  document.querySelectorAll('.product-card, .service-card').forEach((card) => {
     card.classList.add('card-reveal-pending');
     cardObserver.observe(card);
   });
 
+  /* ─── Gallery reveal ─── */
   const galleryObserver = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry, index) => {
+      entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.remove('gallery-reveal-pending');
             entry.target.classList.add('gallery-reveal-visible');
-          }, index * 90);
+          }, i * 90);
           galleryObserver.unobserve(entry.target);
         }
       });
@@ -170,30 +148,84 @@ document.addEventListener('DOMContentLoaded', () => {
     galleryObserver.observe(item);
   });
 
+  /* ─── Carousel ─── */
+  const syncCarousel = () => {
+    if (!carouselViewport) return;
+    const { scrollLeft, scrollWidth, clientWidth } = carouselViewport;
+    const maxScroll = Math.max(0, scrollWidth - clientWidth);
+    const atStart   = scrollLeft <= 8;
+    const atEnd     = scrollLeft >= maxScroll - 8;
+
+    fadeLeft?.classList.toggle('is-visible',  !atStart && maxScroll > 0);
+    fadeRight?.classList.toggle('is-visible', !atEnd   && maxScroll > 0);
+
+    if (carouselPrev) {
+      carouselPrev.disabled = atStart || maxScroll <= 0;
+      carouselPrev.setAttribute('aria-disabled', String(carouselPrev.disabled));
+    }
+    if (carouselNext) {
+      carouselNext.disabled = atEnd || maxScroll <= 0;
+      carouselNext.setAttribute('aria-disabled', String(carouselNext.disabled));
+    }
+
+    if (indicatorThumb) {
+      const track = indicatorThumb.parentElement;
+      if (track && scrollWidth > clientWidth + 1) {
+        const trackW  = track.clientWidth;
+        const thumbW  = Math.max(36, (clientWidth / scrollWidth) * trackW);
+        const x = maxScroll > 0 ? (scrollLeft / maxScroll) * (trackW - thumbW) : 0;
+        indicatorThumb.style.width     = `${thumbW}px`;
+        indicatorThumb.style.transform = `translateX(${x}px)`;
+      }
+    }
+  };
+
+  if (carouselViewport) {
+    const scrollCarousel = (dir) => {
+      const firstCard = carouselViewport.querySelector('.product-card');
+      const track     = carouselViewport.querySelector('.carousel-track');
+      const gap       = track ? parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '0') : 0;
+      const cardW     = firstCard ? firstCard.getBoundingClientRect().width + gap : 0;
+      const step      = Math.max(240, Math.round(cardW || carouselViewport.clientWidth * 0.72));
+      carouselViewport.scrollBy({ left: dir * step, behavior: prefersReduced ? 'auto' : 'smooth' });
+    };
+
+    carouselPrev?.addEventListener('click', () => scrollCarousel(-1));
+    carouselNext?.addEventListener('click', () => scrollCarousel(1));
+
+    carouselViewport.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); scrollCarousel(-1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); scrollCarousel(1); }
+    });
+
+    carouselViewport.addEventListener('scroll', syncCarousel, { passive: true });
+    window.addEventListener('resize', syncCarousel, { passive: true });
+    syncCarousel();
+  }
+
+  /* ─── Contact form ─── */
   if (contactForm) {
     const feedback = contactForm.querySelector('.form-feedback');
-    contactForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const nameField = contactForm.querySelector('#contactName');
-      const emailField = contactForm.querySelector('#contactEmail');
-      const messageField = contactForm.querySelector('#contactMessage');
-      const fields = [nameField, emailField, messageField];
-      let isValid = true;
 
-      fields.forEach((field) => {
-        field.classList.remove('input-error');
-        if (!field.value.trim()) {
-          isValid = false;
-          field.classList.add('input-error');
-        }
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameField    = contactForm.querySelector('#contactName');
+      const emailField   = contactForm.querySelector('#contactEmail');
+      const messageField = contactForm.querySelector('#contactMessage');
+      const fields       = [nameField, emailField, messageField];
+      let valid = true;
+
+      fields.forEach((f) => {
+        f.classList.remove('input-error');
+        if (!f.value.trim()) { valid = false; f.classList.add('input-error'); }
       });
 
-      if (emailField && emailField.value.trim() && !validateEmail(emailField.value)) {
-        isValid = false;
+      if (emailField?.value.trim() && !validateEmail(emailField.value)) {
+        valid = false;
         emailField.classList.add('input-error');
       }
 
-      if (!isValid) {
+      if (!valid) {
         if (feedback) {
           feedback.textContent = 'Please fill in all fields with a valid email address.';
           feedback.classList.add('error');
@@ -209,18 +241,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function validateEmail(value) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  /* ─── Helpers ─── */
+  function validateEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
   }
 
   function createBackToTop() {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'back-to-top';
-    button.setAttribute('aria-label', 'Back to top');
-    button.innerHTML = '<i class="fa-solid fa-arrow-up" aria-hidden="true"></i>';
-    document.body.appendChild(button);
-    button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    return button;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'back-to-top';
+    btn.setAttribute('aria-label', 'Back to top');
+    btn.innerHTML = '<i class="fa-solid fa-arrow-up" aria-hidden="true"></i>';
+    document.body.appendChild(btn);
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' }));
+    return btn;
   }
 });

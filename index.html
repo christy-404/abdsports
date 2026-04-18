@@ -3,19 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ABD SPORTS - Premium Sports Jerseys & Equipment</title>
+  <title>ABD SPORTS — Premium Sports Jerseys &amp; Equipment</title>
+  <meta name="description" content="ABD SPORTS sells premium football and cricket jerseys, basketball gear, training equipment, and sports accessories. Order via WhatsApp or visit our store.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- DNS prefetch for external domains -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://wa.me">
+
+  <!-- Preconnect for font loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+
+  <!-- Preload hero background image (LCP resource) -->
+  <link rel="preload" as="image" href="images/hero-cricket.jpg" fetchpriority="high">
+
+  <!-- Preload hero product images (above the fold) -->
+  <link rel="preload" as="image" href="images/cricket-bat.jpg" fetchpriority="high">
+
+  <!-- Fonts: display=swap prevents render-blocking -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome: load with crossorigin for CORS caching -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#hero">
-        <img src="assets/logo.jpg" alt="ABD SPORTS Logo" class="brand-logo">
+        <img src="assets/logo.jpg" alt="ABD SPORTS" class="brand-logo" width="140" height="48" loading="eager">
       </a>
       <nav class="nav" id="mainNav" aria-label="Primary navigation">
         <a href="#hero">Home</a>
@@ -35,7 +56,7 @@
   </header>
 
   <main>
-    <!-- Hero photo: edit --hero-bg-image in style.css :root (or use a file under assets/) -->
+
     <section class="hero reveal" id="hero">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-grid">
@@ -47,29 +68,39 @@
             <a class="button primary" href="#jerseys"><span>Shop Jerseys</span></a>
             <a class="button secondary" href="#equipment"><span>View Equipment</span></a>
           </div>
-          <a class="whatsapp-btn hero-whatsapp" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer">
+          <a class="whatsapp-btn hero-whatsapp" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-message="Hello, I want to place an order with ABD SPORTS.">
             <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
             <span>Order on WhatsApp</span>
           </a>
         </div>
-        <div class="hero-visual">
-          <div class="hero-card">
-            <span><i class="fa-solid fa-bolt" aria-hidden="true"></i> Elite Performance Gear</span>
-            <div class="stat-grid">
-              <div>
-                <strong>500+</strong>
-                <p>Jerseys in stock</p>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-product-showcase">
+            <div class="hero-product-card hero-product-card--main">
+              <img src="images/cricket-bat.jpg" alt="Cricket bat" width="220" height="320" loading="eager" fetchpriority="high" decoding="async">
+              <span>Cricket Bats</span>
+            </div>
+
+            <div class="hero-product-stack">
+              <div class="hero-product-card hero-product-card--sm">
+                <img src="images/cricket-jersey.jpg" alt="Cricket jersey" width="164" height="152" loading="eager" decoding="async">
+                <span>Jerseys</span>
               </div>
-              <div>
-                <strong>24/7</strong>
-                <p>Customer support</p>
+
+              <div class="hero-product-card hero-product-card--sm">
+                <img src="images/football.jpg" alt="Footballs" width="164" height="152" loading="eager" decoding="async">
+                <span>Footballs</span>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="scroll-indicator" aria-hidden="true">
+        <span>Scroll</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
     </section>
 
+    <!-- ===== FEATURED PRODUCTS CAROUSEL ===== -->
     <section class="section section--surface reveal" id="featured">
       <div class="container">
         <div class="section-heading section-heading--major">
@@ -86,72 +117,81 @@
           <div class="carousel-shell">
             <div class="carousel-fade carousel-fade--left" aria-hidden="true" data-fade-left></div>
             <div class="carousel-fade carousel-fade--right" aria-hidden="true" data-fade-right></div>
-            <div class="carousel-viewport" id="productCarouselViewport" tabindex="0">
+            <div class="carousel-viewport" id="productCarouselViewport" tabindex="0" aria-label="Featured products carousel">
               <div class="carousel-track" id="productCarouselTrack">
+
                 <article class="product-card">
                   <div class="card-image card-image--product">
-                    <img src="images/gallery-4.svg" alt="Football jersey product" width="800" height="600" loading="lazy" decoding="async">
-                  </div>
-                  <h3>Football Jersey</h3>
-                  <p>Official team jersey with premium materials and breathable fabric.</p>
-                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
-                </article>
-                <article class="product-card">
-                  <div class="card-image card-image--product">
-                    <img src="images/gallery-1.svg" alt="Cricket bat product" width="800" height="600" loading="lazy" decoding="async">
+                    <img src="images/cricket-bat.jpg" alt="Cricket bat product photo" width="800" height="600" loading="eager" fetchpriority="high" decoding="async">
                   </div>
                   <h3>Cricket Bat</h3>
                   <p>Professional-grade cricket bat crafted for power and precision.</p>
-                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Cricket Bat"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
                 </article>
+
                 <article class="product-card">
                   <div class="card-image card-image--product">
-                    <img src="images/gallery-3.svg" alt="Basketball product" width="800" height="600" loading="lazy" decoding="async">
+                    <img src="images/cricket-jersey.jpg" alt="Cricket jersey product photo" width="800" height="600" loading="lazy" decoding="async">
+                  </div>
+                  <h3>Cricket Jersey</h3>
+                  <p>High-performance cricket jersey for players and fans alike.</p>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Cricket Jersey"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
+                </article>
+
+                <article class="product-card">
+                  <div class="card-image card-image--product">
+                    <img src="images/football-jersey.jpg" alt="Football jersey product photo" width="800" height="600" loading="lazy" decoding="async">
+                  </div>
+                  <h3>Football Jersey</h3>
+                  <p>Official team jersey with premium materials and breathable fabric.</p>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Football Jersey"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
+                </article>
+
+                <article class="product-card">
+                  <div class="card-image card-image--product">
+                    <img src="images/basketball.jpg" alt="Basketball product photo" width="800" height="600" loading="lazy" decoding="async">
                   </div>
                   <h3>Basketball</h3>
                   <p>High-quality basketball with superior grip and bounce.</p>
-                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Basketball"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
                 </article>
+
                 <article class="product-card">
                   <div class="card-image card-image--product">
-                    <img src="images/gallery-2.svg" alt="Sports gloves product" width="800" height="600" loading="lazy" decoding="async">
-                  </div>
-                  <h3>Sports Gloves</h3>
-                  <p>Protective gloves for cricket, football, and other sports.</p>
-                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
-                </article>
-                <article class="product-card">
-                  <div class="card-image card-image--product">
-                    <img src="https://images.unsplash.com/photo-1517649763962-0c62306601b7?auto=format&fit=crop&w=800&q=75" alt="Training cones on a sports field" width="800" height="600" loading="lazy" decoding="async">
-                  </div>
-                  <h3>Training Cones</h3>
-                  <p>Essential training equipment for agility and skill development.</p>
-                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
-                </article>
-                <article class="product-card">
-                  <div class="card-image card-image--product">
-                    <img src="https://images.unsplash.com/photo-1614632537423-1e939e74a26d?auto=format&fit=crop&w=800&q=75" alt="Soccer ball on grass" width="800" height="600" loading="lazy" decoding="async">
+                    <img src="images/football.jpg" alt="Football product photo" width="800" height="600" loading="lazy" decoding="async">
                   </div>
                   <h3>Football</h3>
                   <p>Durable football designed for training and competitive play.</p>
-                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Football"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
                 </article>
+
                 <article class="product-card">
                   <div class="card-image card-image--product">
-                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=75" alt="Dumbbells and fitness training gear" width="800" height="600" loading="lazy" decoding="async">
+                    <img src="images/training-cones.jpeg" alt="Training cones product photo" width="800" height="600" loading="lazy" decoding="async">
+                  </div>
+                  <h3>Training Cones</h3>
+                  <p>Essential training equipment for agility and skill development.</p>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Training Cones"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
+                </article>
+
+                <article class="product-card">
+                  <div class="card-image card-image--product">
+                    <img src="images/about-fitness.jpg" alt="Fitness accessories dumbbells" width="800" height="600" loading="lazy" decoding="async">
                   </div>
                   <h3>Fitness Accessories</h3>
                   <p>Weights, resistance bands, and other fitness essentials.</p>
-                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Fitness Accessories"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
                 </article>
+
                 <article class="product-card">
                   <div class="card-image card-image--product">
-                    <img src="https://images.unsplash.com/photo-1531415074968-036ba1d42f7d?auto=format&fit=crop&w=800&q=75" alt="Cricket player in team jersey" width="800" height="600" loading="lazy" decoding="async">
+                    <img src="images/gloves.jpg" alt="Sports gloves product photo" width="800" height="600" loading="lazy" decoding="async">
                   </div>
-                  <h3>Cricket Jersey</h3>
-                  <p>High-performance cricket jersey for players and fans.</p>
-                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order Now</a>
+                  <h3>Sports Gloves</h3>
+                  <p>Protective gloves for cricket, football, and other sports.</p>
+                  <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Sports Gloves"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
                 </article>
+
               </div>
             </div>
           </div>
@@ -159,9 +199,15 @@
             <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
           </button>
         </div>
+        <div class="carousel-indicator" aria-hidden="true">
+          <div class="carousel-indicator-track">
+            <div class="carousel-indicator-thumb" id="carouselIndicatorThumb"></div>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- ===== JERSEYS SECTION ===== -->
     <section class="section reveal" id="jerseys">
       <div class="container">
         <div class="section-heading">
@@ -174,35 +220,39 @@
         <div class="cards-grid">
           <article class="service-card">
             <div class="card-image card-image--product">
-              <img src="images/gallery-4.svg" alt="Football jerseys" width="400" height="300" loading="lazy" decoding="async">
-            </div>
-            <h3>Football Jerseys</h3>
-            <p>Official team jerseys with authentic designs and premium materials.</p>
-          </article>
-          <article class="service-card">
-            <div class="card-image card-image--product">
-              <img src="images/gallery-1.svg" alt="Cricket jerseys" width="400" height="300" loading="lazy" decoding="async">
+              <img src="images/cricket-jersey.jpg" alt="Cricket jerseys" width="800" height="600" loading="lazy" decoding="async">
             </div>
             <h3>Cricket Jerseys</h3>
             <p>High-performance cricket jerseys for players and fans alike.</p>
+            <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Cricket Jerseys"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
           </article>
           <article class="service-card">
             <div class="card-image card-image--product">
-              <img src="images/gallery-3.svg" alt="Basketball jerseys" width="400" height="300" loading="lazy" decoding="async">
+              <img src="images/football-jersey.jpg" alt="Football jerseys" width="800" height="600" loading="lazy" decoding="async">
+            </div>
+            <h3>Football Jerseys</h3>
+            <p>Official team jerseys with authentic designs and premium materials.</p>
+            <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Football Jerseys"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
+          </article>
+          <article class="service-card">
+            <div class="card-image card-image--product">
+              <img src="images/basketball.jpg" alt="Basketball jerseys" width="800" height="600" loading="lazy" decoding="async">
             </div>
             <h3>Basketball Jerseys</h3>
             <p>Dynamic basketball jerseys with breathable fabrics and bold designs.</p>
+            <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Basketball Jerseys"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
           </article>
           <article class="service-card">
             <div class="card-image card-image--product">
-              <img src="images/gallery-4.svg" alt="Club jerseys" width="400" height="300" loading="lazy" decoding="async">
+              <img src="images/club-jersey.jpg" alt="Club jerseys and team apparel" width="800" height="600" loading="lazy" decoding="async">
             </div>
             <h3>Club Jerseys</h3>
             <p>Custom club jerseys for teams and local sports organizations.</p>
+            <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Club Jerseys"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
           </article>
         </div>
         <div class="section-actions">
-          <a class="whatsapp-btn" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer">
+          <a class="whatsapp-btn" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-message="Hello, I want to order jerseys from ABD SPORTS.">
             <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
             <span>Order Jerseys on WhatsApp</span>
           </a>
@@ -210,6 +260,7 @@
       </div>
     </section>
 
+    <!-- ===== EQUIPMENT SECTION ===== -->
     <section class="section section--surface reveal" id="equipment">
       <div class="container">
         <div class="section-heading">
@@ -222,49 +273,55 @@
         <div class="cards-grid">
           <article class="service-card">
             <div class="card-image card-image--product">
-              <img src="images/gallery-1.svg" alt="Cricket bats" width="400" height="300" loading="lazy" decoding="async">
+              <img src="images/cricket-bat.jpg" alt="Cricket bat on grass" width="800" height="600" loading="lazy" decoding="async">
             </div>
             <h3>Cricket Bats</h3>
             <p>Professional-grade cricket bats crafted for power and precision.</p>
+            <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Cricket Bats"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
           </article>
           <article class="service-card">
             <div class="card-image card-image--product">
-              <img src="images/gallery-2.svg" alt="Footballs" width="400" height="300" loading="lazy" decoding="async">
+              <img src="images/football.jpg" alt="Soccer ball on a grass pitch" width="800" height="600" loading="lazy" decoding="async">
             </div>
             <h3>Footballs</h3>
             <p>Durable footballs designed for training and competitive play.</p>
+            <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Footballs"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
           </article>
           <article class="service-card">
             <div class="card-image card-image--product">
-              <img src="images/gallery-3.svg" alt="Basketballs" width="400" height="300" loading="lazy" decoding="async">
+              <img src="images/basketball.jpg" alt="Basketball on a hardwood court" width="800" height="600" loading="lazy" decoding="async">
             </div>
             <h3>Basketballs</h3>
             <p>High-quality basketballs with superior grip and bounce.</p>
+            <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Basketballs"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
           </article>
           <article class="service-card">
             <div class="card-image card-image--product">
-              <img src="images/gallery-2.svg" alt="Training cones" width="400" height="300" loading="lazy" decoding="async">
+              <img src="images/training-cones.jpeg" alt="Agility training cones on a sports field" width="800" height="600" loading="lazy" decoding="async">
             </div>
             <h3>Training Cones</h3>
             <p>Essential training equipment for agility and skill development.</p>
+            <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Training Cones"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
           </article>
           <article class="service-card">
             <div class="card-image card-image--product">
-              <img src="images/gallery-1.svg" alt="Sports gloves" width="400" height="300" loading="lazy" decoding="async">
+              <img src="images/gloves.jpg" alt="Sports gloves" width="800" height="600" loading="lazy" decoding="async">
             </div>
             <h3>Sports Gloves</h3>
             <p>Protective gloves for cricket, football, and other sports.</p>
+            <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Sports Gloves"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
           </article>
           <article class="service-card">
             <div class="card-image card-image--product">
-              <img src="images/gallery-3.svg" alt="Fitness accessories" width="400" height="300" loading="lazy" decoding="async">
+              <img src="images/about-fitness.jpg" alt="Dumbbells and training accessories in a gym" width="800" height="600" loading="lazy" decoding="async">
             </div>
             <h3>Fitness Accessories</h3>
             <p>Weights, resistance bands, and other fitness essentials.</p>
+            <a class="card-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-product="Fitness Accessories"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order on WhatsApp</a>
           </article>
         </div>
         <div class="section-actions">
-          <a class="whatsapp-btn" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer">
+          <a class="whatsapp-btn" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-message="Hello, I want to order sports equipment from ABD SPORTS.">
             <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
             <span>Order Equipment on WhatsApp</span>
           </a>
@@ -272,6 +329,7 @@
       </div>
     </section>
 
+    <!-- ===== GALLERY ===== -->
     <section class="section reveal" id="gallery">
       <div class="container">
         <div class="section-heading section-heading--major">
@@ -283,30 +341,31 @@
         </div>
         <div class="gallery-grid">
           <div class="gallery-item">
-            <img src="images/gallery-1.svg" alt="Premium Cricket Bat" loading="lazy" decoding="async">
+            <img src="images/cricket-bat.jpg" alt="Cricket bat on turf" width="900" height="675" loading="lazy" decoding="async">
             <span class="gallery-label">Cricket Bats</span>
           </div>
           <div class="gallery-item">
-            <img src="images/gallery-2.svg" alt="Professional Football" loading="lazy" decoding="async">
+            <img src="images/football.jpg" alt="Football on grass" width="900" height="675" loading="lazy" decoding="async">
             <span class="gallery-label">Footballs</span>
           </div>
           <div class="gallery-item">
-            <img src="images/gallery-3.svg" alt="Basketball Collection" loading="lazy" decoding="async">
+            <img src="images/basketball.jpg" alt="Basketball on court" width="900" height="675" loading="lazy" decoding="async">
             <span class="gallery-label">Basketballs</span>
           </div>
           <div class="gallery-item">
-            <img src="images/gallery-4.svg" alt="Sports Jerseys" loading="lazy" decoding="async">
+            <img src="images/club-jersey.jpg" alt="Cricket player in team jersey" width="900" height="675" loading="lazy" decoding="async">
             <span class="gallery-label">Sports Jerseys</span>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ===== ABOUT ===== -->
     <section class="section section--surface reveal" id="about">
       <div class="container">
         <div class="section-grid">
           <div class="about-image">
-            <img src="images/gallery-1.svg" alt="ABD SPORTS Store Interior" loading="lazy">
+            <img src="images/about-fitness.jpg" alt="Gym floor with dumbbells and training equipment" width="900" height="600" loading="lazy" decoding="async">
           </div>
           <div class="about-content">
             <div class="section-heading section-heading--compact section-heading--title-block">
@@ -338,13 +397,11 @@
       </div>
     </section>
 
-    <!--
-      ===== EDIT STORE CONTACT (ABD SPORTS) =====
-      • Phone display text: change the visible number in <span class="contact-detail-text">
-      • Phone link: href="tel:+YOURCOUNTRYCODEANDNUMBER" (digits only after tel:)
-      • WhatsApp: href="https://wa.me/YOURNUMBER" — digits only, country code, no + or spaces
-      • Address: replace the line inside .contact-detail-text for address
-      • Map: Google Maps → Share → Embed a map → copy only the src="..." URL into iframe below
+    <!-- ===== CONTACT =====
+      • Phone: change href="tel:+YOURCOUNTRYCODEANDNUMBER" and the visible text
+      • WhatsApp: change href="https://wa.me/YOURNUMBER" (digits only, no + or spaces)
+      • Address: update the contact-detail-text for address
+      • Map: Google Maps → Share → Embed → copy src="..." into iframe below
     -->
     <section class="section contact-section reveal" id="contact">
       <div class="container contact-grid">
@@ -377,7 +434,7 @@
               <span class="contact-detail-icon" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></span>
               <div>
                 <strong>WhatsApp</strong>
-                <a class="contact-detail-link" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer"><span class="contact-detail-text">+1 (555) 123-4567</span></a>
+                <a class="contact-detail-link" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-message="Hello, I want to get in touch with ABD SPORTS."><span class="contact-detail-text">+1 (555) 123-4567</span></a>
               </div>
             </li>
             <li class="contact-detail">
@@ -391,11 +448,11 @@
           <form class="contact-form" id="contactForm" novalidate>
             <div class="input-group">
               <label for="contactName">Name</label>
-              <input id="contactName" name="name" type="text" placeholder="Your name" required>
+              <input id="contactName" name="name" type="text" placeholder="Your name" required autocomplete="name">
             </div>
             <div class="input-group">
               <label for="contactEmail">Email</label>
-              <input id="contactEmail" name="email" type="email" placeholder="Your email" required>
+              <input id="contactEmail" name="email" type="email" placeholder="Your email" required autocomplete="email">
             </div>
             <div class="input-group">
               <label for="contactMessage">Message</label>
@@ -404,10 +461,16 @@
             <div class="form-feedback" aria-live="polite"></div>
             <button class="button primary" type="submit"><span>Send Message</span></button>
           </form>
-          <a class="whatsapp-btn contact-whatsapp-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-            <span>WhatsApp Us</span>
-          </a>
+          <div class="contact-cta-row">
+            <a class="whatsapp-btn contact-whatsapp-cta" href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" data-wa-message="Hello, I want to get in touch with ABD SPORTS.">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              <span>WhatsApp Us</span>
+            </a>
+            <a class="contact-instagram-link" href="https://www.instagram.com/_abdsports?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Follow ABD SPORTS on Instagram">
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+              <span>Follow on Instagram</span>
+            </a>
+          </div>
         </div>
         <div class="map-wrapper">
           <!-- Replace iframe src with your embed URL from Google Maps -->
@@ -420,6 +483,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
@@ -427,11 +491,11 @@
       <div class="footer-top">
         <div class="footer-brand">
           <a class="footer-brand-link" href="#hero">
-            <img src="assets/logo.jpg" alt="ABD SPORTS" class="footer-logo">
+            <img src="assets/logo.jpg" alt="ABD SPORTS" class="footer-logo" width="160" height="48" loading="lazy" decoding="async">
           </a>
           <p class="footer-tagline">Premium jerseys &amp; equipment for athletes who demand more.</p>
         </div>
-        <nav class="footer-nav" aria-label="Footer">
+        <nav class="footer-nav" aria-label="Footer navigation">
           <h4 class="footer-heading">Quick links</h4>
           <ul class="footer-link-list">
             <li><a href="#hero">Home</a></li>
@@ -460,8 +524,8 @@
           </ul>
           <div class="footer-social" aria-label="Social media">
             <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
-            <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-            <a href="#" class="social-icon" aria-label="Twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/_abdsports?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="social-icon" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
@@ -476,6 +540,7 @@
     <span>WhatsApp</span>
   </button>
 
-  <script src="script.js"></script>
+  <!-- defer keeps script non-render-blocking while preserving execution order -->
+  <script src="script.js" defer></script>
 </body>
 </html>
